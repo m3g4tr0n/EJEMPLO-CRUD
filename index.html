@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular</title>
+    
+    <link rel="stylesheet" href="estilos.css">
+    <script src="/angular/angular.min.js"></script>
+    <script src="app2.js"></script>
+
+</head>
+<body ng-app="Myapp">
+    <div ng-controller="ContactCtrl" >
+        <form>
+            <label>Nombre :</label><br>
+            <input type="text" name="name" ng-model="newContact.name" onclick="select(this)"
+            <br /> <br />
+
+            <label>E-mail :</label><br>
+            <input type="text" name="email" ng-model="newContact.email" onclick="select(this)">
+            <br /> <br />
+
+            <label>Telefono :</label><br>
+            <input type="text" name="phone" ng-model="newContact.phone" onclick="select(this)" >
+            <br /> <br />
+
+            <input type="hidden" ng-model="newContact.id">
+            <input type="button" value="save" ng-click="saveContact()">
+            <br /><br />
+            
+        </form>
+            <table id="listado">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="contact in contacts">
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.email}}</td>
+                        <td align="right">{{contact.phone}}</td>
+                        <td align="center" >
+                            <input type="button" id="bottn2" value="Editar" ng-click="edit(contact.id)">
+                            <input type="button" id="bottn1" value="Borrar" ng-click="delete(contact.id)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>
